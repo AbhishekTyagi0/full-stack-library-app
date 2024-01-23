@@ -10,12 +10,14 @@ const catalogRouter = require("./routes/catalog");
 
 const app = express();
 
+// Load environment variables from .env file
+require("dotenv").config();
+
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 
-const mongoDB =
-  "mongodb+srv://abhishek4310:12345qwert@cluster0.nmiv5up.mongodb.net/local_library?retryWrites=true&w=majority";
+const mongoDB = process.env.DB_KEY;
 
 main().catch((err) => console.log(err));
 async function main() {
